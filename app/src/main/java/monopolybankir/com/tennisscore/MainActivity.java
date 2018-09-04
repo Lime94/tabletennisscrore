@@ -1,6 +1,8 @@
 package monopolybankir.com.tennisscore;
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bnd = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        bnd.toolbar.setTitle(R.string.app_name);
         setSupportActionBar(bnd.toolbar);
     }
 }
+
+

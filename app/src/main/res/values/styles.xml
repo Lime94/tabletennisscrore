@@ -1,20 +1,110 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+
+    <style name="expandedtoolbar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="collapsedtoolbar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#4d4d4d</item>
+    </style>
+
+
+
+
+    <style name="h1" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textSize">96sp</item>
+
+    </style>
+
+    <style name="h2" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textSize">60sp</item>
+    </style>
+
+    <style name="h3" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="h4" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="h5" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="h6" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="body1" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="body2" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="subtitle1" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="subtitle2" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+    <style name="EditTxtRed" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorControlActivated">@color/vintage_red</item>
+        <item name="android:colorControlNormal">@color/vintage_red</item>
+        <item name="boxStrokeColor">@color/vintage_red</item>
+        <item name="android:textColorHint">@color/vintage_red</item>
+        <item name="colorAccent">@color/vintage_red</item>
+    </style>
+
+
+    <style name="EditTxtBlue" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorControlActivated">@color/vintage_blue</item>
+        <item name="android:colorControlNormal">@color/vintage_blue</item>
+        <item name="boxStrokeColor">@color/vintage_blue</item>
+        <item name="android:textColorHint">@color/vintage_blue</item>
+        <item name="colorAccent">@color/vintage_blue</item>
+    </style>
 </resources>
