@@ -2,55 +2,73 @@ package monopolybankir.com.tennisscore.game.statepattern;
 
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
+
 import monopolybankir.com.tennisscore.game.Pitcher;
 import monopolybankir.com.tennisscore.game.Player;
 import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;
 import monopolybankir.com.tennisscore.game.model.ReturnObject;
 import monopolybankir.com.tennisscore.game.model.ReturnObjectBuilder;
+import monopolybankir.com.tennisscore.game.model.Winner;
 
 public class TieBreakGameState extends AbstractState {
 
-    String  firstPlayerState;
-    String  secondPlayerState;
+    int firstScore;
+    int secondScore;
 
-    public TieBreakGameState(CallBack callBack, PlayerManager playerManager, Pitcher pitcher, AbstractState nextState) {
-        super(callBack, playerManager, pitcher, nextState);
+    String tieBreakLabelFirst;
+    String tieBreakLabelSecond;
 
-        int firstScore  = playerManager.getPlayerByRange(PlayerRange.First).getScore();
-        int secondScore = playerManager.getPlayerByRange(PlayerRange.Second).getScore();
 
-        if(firstScore > secondScore){
-            firstPlayerState = TieBrakeState.MORE.name();
-            secondPlayerState = TieBrakeState.LESS.name();
-        }else{
-            firstPlayerState = TieBrakeState.LESS.name();
-            secondPlayerState = TieBrakeState.MORE.name();
-        }
+    public TieBreakGameState(CallBack callBack, PlayerManager playerManager, Pitcher pitcher) {
+        super(callBack, playerManager, pitcher);
+
+        firstScore = playerManager.getPlayerByRange(PlayerRange.First).getScore();
+        secondScore = playerManager.getPlayerByRange(PlayerRange.Second).getScore();
+
+        setScoreLabel();
     }
 
     @Override
     public void incrementScore(PlayerRange playerRange) {
         Player player = playerManager.getPlayerByRange(playerRange);
-        isWinner(player);
-
         Player opponent = playerManager.getOpponent(pitcher.getCurrentPitcher());
         pitcher.setPitcher(opponent);
+
+        if (playerRange.equals(PlayerRange.First))
+            firstScore++;
+        else
+            secondScore++;
+
+        setScoreLabel();
 
         isWinner(player);
     }
 
 
-    private void isWinner(Player player){
+    private void isWinner(Player player) {
 
-        if(player.getRange().equals(PlayerRange.First) && firstPlayerState.equals(TieBrakeState.MORE.name())){
-            Log.d("Winner", player.getName());
-            return;
-        }
+        int goalDiffenece = Math.abs(secondScore - firstScore);
 
-        if(player.getRange().equals(PlayerRange.Second) && firstPlayerState.equals(TieBrakeState.MORE.name())){
-            Log.d("Winner", player.getName());
-            return;
+
+        if (goalDiffenece >= 2)
+            EventBus.getDefault().post(new Winner(player,playerManager.getOpponent(player)));
+    }
+
+
+    private void setScoreLabel() {
+        if (firstScore > secondScore) {
+            tieBreakLabelFirst = TieBrakeState.MORE.name();
+            tieBreakLabelSecond = TieBrakeState.LESS.name();
+
+        } else if (firstScore < secondScore) {
+            tieBreakLabelFirst = TieBrakeState.LESS.name();
+            tieBreakLabelSecond = TieBrakeState.MORE.name();
+
+        } else if (firstScore == secondScore) {
+            tieBreakLabelSecond = TieBrakeState.EQUALY.name();
+            tieBreakLabelFirst = TieBrakeState.EQUALY.name();
         }
     }
 
@@ -58,15 +76,15 @@ public class TieBreakGameState extends AbstractState {
     public ReturnObject getStateGame() {
         return new ReturnObjectBuilder()
                 .setFirstPlayerName(playerManager.getPlayerByRange(PlayerRange.First).getName())
-                .setFirstPlayerScore(firstPlayerState)
+                .setFirstPlayerScore(tieBreakLabelFirst)
                 .setSecondPlayerName(playerManager.getPlayerByRange(PlayerRange.Second).getName())
-                .setSecondPlayerScore(secondPlayerState)
+                .setSecondPlayerScore(tieBreakLabelSecond)
                 .setPitcher(pitcher.getCurrentPitcherRange())
                 .build();
     }
 
 
-    private enum TieBrakeState{
+    private enum TieBrakeState {
         MORE,
         LESS,
         EQUALY

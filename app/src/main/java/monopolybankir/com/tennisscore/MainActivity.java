@@ -11,9 +11,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import monopolybankir.com.tennisscore.databinding.ActivityMainBinding;
+import monopolybankir.com.tennisscore.game.statepattern.GameType;
+import monopolybankir.com.tennisscore.views.ChooseDurationGameDialog;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ChooseDurationGameDialog.CallBack{
 
     ActivityMainBinding bnd;
 
@@ -24,16 +26,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(bnd.toolbar);
 
 
-        bnd.content.btnStartGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GameActivity.start(
+        bnd.content.btnStartGame.setOnClickListener(view ->
+                new ChooseDurationGameDialog().show(getSupportFragmentManager(),"choose_duration"));
+    }
+
+    @Override
+    public void onUserChoseGame(GameType gameType) {
+                        GameActivity.start(
                         MainActivity.this,
                         bnd.content.etFirstPlayerName.getText().toString(),
-                        bnd.content.etSecondPlayerName.getText().toString()
+                        bnd.content.etSecondPlayerName.getText().toString(),
+                        gameType
                 );
-            }
-        });
     }
 }
 

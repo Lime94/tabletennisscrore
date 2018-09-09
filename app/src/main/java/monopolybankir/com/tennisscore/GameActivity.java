@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import monopolybankir.com.tennisscore.databinding.ActivityGameBinding;
 import monopolybankir.com.tennisscore.game.PlayerRange;
+import monopolybankir.com.tennisscore.game.model.Winner;
 import monopolybankir.com.tennisscore.game.statepattern.GameType;
 import monopolybankir.com.tennisscore.mvp.GameActivityPresenter;
 import monopolybankir.com.tennisscore.mvp.IGameActivity;
@@ -14,8 +15,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 
 public class GameActivity extends MvpAppCompatActivity implements IGameActivity {
@@ -27,12 +32,19 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
 
     public static final String FLAG_FIRST_PLAYER_NAME = "1";
     public static final String FLAG_SECOND_PLAYER_NAME = "2";
+    public static final String FLAG_GAME_TYPE = "3";
 
 
-    public static void start(Activity activity, String nameFirst, String nameSecond) {
+    public static void start(Activity activity, String nameFirst, String nameSecond,GameType gameType) {
+
         Intent intent = new Intent(activity, GameActivity.class);
+        if(!nameFirst.isEmpty())
         intent.putExtra(FLAG_FIRST_PLAYER_NAME, nameFirst);
+
+        if(!nameSecond.isEmpty())
         intent.putExtra(FLAG_SECOND_PLAYER_NAME, nameSecond);
+
+        intent.putExtra(FLAG_GAME_TYPE,gameType);
         activity.startActivity(intent);
     }
 
@@ -46,10 +58,17 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
 
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     public void onPresenterCreated() {
         String name1 = getIntent().getExtras().getString(FLAG_FIRST_PLAYER_NAME, "Player1");
         String name2 = getIntent().getExtras().getString(FLAG_SECOND_PLAYER_NAME, "Player2");
-        gameActivityPresenter.initGame(name1, name2, GameType.LARGE);
+        GameType gameType = (GameType) getIntent().getExtras().getSerializable(FLAG_GAME_TYPE);
+        gameActivityPresenter.initGame(this, name1, name2, gameType);
     }
 
     @Override
@@ -66,7 +85,25 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
     }
 
     @Override
+    public void showPlayersName(String playerOneName, String playerTwoName) {
+        bnd.tvPlayerOneName.setText(playerOneName);
+        bnd.tvPlayerTwoName.setText(playerTwoName);
+    }
+
+
+    @Override
     public void showPitcherDialog() {
         new PitcherInfoDialog().show(getSupportFragmentManager(), PitcherInfoDialog.class.getSimpleName());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onWinnerDetermined(Winner winner){
+        Toast.makeText(this,winner.getWinnerName(),Toast.LENGTH_SHORT).show();
     }
 }

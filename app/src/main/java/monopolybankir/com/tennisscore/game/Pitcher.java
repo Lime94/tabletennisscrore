@@ -13,6 +13,9 @@ public class Pitcher {
     }
 
     public PlayerRange getCurrentPitcherRange(){
-        return pitcherPlayer.getRange();
+        if(pitcherPlayer != null){
+            return pitcherPlayer.getRange();
+        }
+        return null;
     }
 }

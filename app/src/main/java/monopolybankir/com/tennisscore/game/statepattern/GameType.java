@@ -1,6 +1,8 @@
 package monopolybankir.com.tennisscore.game.statepattern;
 
-public enum GameType {
+import java.io.Serializable;
+
+public enum GameType implements Serializable {
     SHORT,
     LARGE
 }

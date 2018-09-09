@@ -22,4 +22,7 @@ public interface IGameActivity extends MvpView {
     @StateStrategyType(AddToEndSingleStrategy.class)
     void showScore(String playerOneScore, String playerTwoScore);
 
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void showPlayersName(String playerOneName, String playerTwoName);
+
 }

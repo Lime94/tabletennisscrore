@@ -47,6 +47,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginTop="2dp"
+            android:elevation="10dp"
+            android:src="@drawable/bg_table_blue"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintBottom_toTopOf="@+id/tvPlayerTwoName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +62,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:elevation="10dp"
             android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/bg_red_table"
             app:layout_constraintBottom_toTopOf="@+id/secondSide"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,10 +105,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvPlayerTwoName"
             app:layout_constraintEnd_toStartOf="@+id/secondSide">
 
             <ImageView
@@ -108,14 +116,14 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="10dp"
-                android:src="@color/black" />
+                android:src="@drawable/ic_ball" />
 
             <monopolybankir.com.tennisscore.views.VerticalTextView
                 style="@style/subtitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitcher"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/vintage_blue" />
         </LinearLayout>
 
 
@@ -123,26 +131,26 @@
             android:id="@+id/llFirstPlayerPitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/firstSide"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneName">
 
             <monopolybankir.com.tennisscore.views.VerticalTextView
                 style="@style/subtitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitcher"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/vintage_red" />
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:src="@color/black" />
+                android:src="@drawable/ic_ball" />
         </LinearLayout>
 
 

@@ -19,6 +19,12 @@ public abstract class AbstractState {
         this.nextState = nextState;
     }
 
+    AbstractState(CallBack callBack, PlayerManager playerManager, Pitcher pitcher){
+        this.playerManager = playerManager;
+        this.pitcher = pitcher;
+        this.callBack = callBack;
+    }
+
     public abstract void incrementScore(PlayerRange playerRange);
 
     public abstract ReturnObject getStateGame();

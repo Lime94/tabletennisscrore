@@ -10,7 +10,6 @@ import monopolybankir.com.tennisscore.game.statepattern.GameType;
 import monopolybankir.com.tennisscore.game.statepattern.LargeGameState;
 import monopolybankir.com.tennisscore.game.statepattern.PitcherState;
 import monopolybankir.com.tennisscore.game.statepattern.ShortGameState;
-import monopolybankir.com.tennisscore.game.statepattern.TieBreakGameState;
 
 public class Game implements CallBack {
 
@@ -28,13 +27,13 @@ public class Game implements CallBack {
         AbstractState nextState;
         switch (typeGame) {
             case SHORT:
-                nextState = new ShortGameState(this, playerManager, pitcher, new TieBreakGameState(this,playerManager,pitcher,null));
+                nextState = new ShortGameState(this, playerManager, pitcher);
                 break;
             case LARGE:
-                nextState = new LargeGameState(this, playerManager, pitcher, new TieBreakGameState(this,playerManager,pitcher,null));
+                nextState = new LargeGameState(this, playerManager, pitcher);
                 break;
             default:
-                nextState = new LargeGameState(this, playerManager, pitcher, new TieBreakGameState(this,playerManager,pitcher,null));
+                nextState = new LargeGameState(this, playerManager, pitcher);
                 break;
         }
 

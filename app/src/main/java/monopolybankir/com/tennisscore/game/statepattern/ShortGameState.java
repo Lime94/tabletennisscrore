@@ -2,17 +2,20 @@ package monopolybankir.com.tennisscore.game.statepattern;
 
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
+
 import monopolybankir.com.tennisscore.game.Pitcher;
 import monopolybankir.com.tennisscore.game.Player;
 import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;
 import monopolybankir.com.tennisscore.game.model.ReturnObject;
 import monopolybankir.com.tennisscore.game.model.ReturnObjectBuilder;
+import monopolybankir.com.tennisscore.game.model.Winner;
 
 public class ShortGameState extends AbstractState {
 
-    public ShortGameState(CallBack callBack, PlayerManager playerManager, Pitcher pitcher, AbstractState nextState) {
-        super(callBack, playerManager, pitcher, nextState);
+    public ShortGameState(CallBack callBack, PlayerManager playerManager, Pitcher pitcher) {
+        super(callBack, playerManager, pitcher);
     }
 
     @Override
@@ -46,10 +49,9 @@ public class ShortGameState extends AbstractState {
 
         if(player.getScore()>= 11){
             if (goalDiffenece >= 2)
-                Log.d("Winner", player.getName());
-
+                EventBus.getDefault().post(new Winner(player,opponent));
             else
-                callBack.onSetState(nextState); //tieBreak
+                callBack.onSetState(new TieBreakGameState(callBack,playerManager,pitcher)); //tieBreak
 
         }
     }
