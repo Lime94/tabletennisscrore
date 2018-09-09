@@ -117,4 +117,13 @@
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
+
+    <style name="PortraitPlayerTextView" parent="subtitle2">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:ems">1</item>
+        <item name="android:lineSpacingMultiplier">0.7</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

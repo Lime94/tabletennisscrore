@@ -5,10 +5,12 @@ import com.arellomobile.mvp.MvpPresenter;
 
 import monopolybankir.com.tennisscore.game.Game;
 import monopolybankir.com.tennisscore.game.PlayerRange;
+import monopolybankir.com.tennisscore.game.model.ReturnObject;
+import monopolybankir.com.tennisscore.game.statepattern.GameType;
 
 
 @InjectViewState
-public class GameActivityPresenter extends MvpPresenter<IGameActivity> {
+public class GameActivityPresenter extends MvpPresenter<IGameActivity>  {
 
     Game game;
 
@@ -19,12 +21,19 @@ public class GameActivityPresenter extends MvpPresenter<IGameActivity> {
         getViewState().onPresenterCreated();
     }
 
-    public void initGame(String nameFirst, String nameSecond) {
-        game = new Game(nameFirst,nameSecond);
+    public void initGame(String nameFirst, String nameSecond, GameType gameType) {
+        game = new Game(nameFirst,nameSecond,gameType);
     }
 
+    public  void onIncrementScore(PlayerRange playerRange){
+        game.incrementScore(playerRange);
 
-    public void setPitcher(PlayerRange range){
-        game.setPitcher(range);
+        ReturnObject stateGame = game.getStateGame();
+
+        getViewState().showPitcher(stateGame.getPitcherRange());
+
+        String scorePlayerOne = stateGame.getFirstPlayerScore();
+        String scorePlayerTwo = stateGame.getSecondPlayerScore();
+        getViewState().showScore(scorePlayerOne, scorePlayerTwo);
     }
 }

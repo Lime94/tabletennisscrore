@@ -3,47 +3,60 @@ package monopolybankir.com.tennisscore.game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+import monopolybankir.com.tennisscore.game.model.ReturnObject;
+import monopolybankir.com.tennisscore.game.statepattern.AbstractState;
+import monopolybankir.com.tennisscore.game.statepattern.CallBack;
+import monopolybankir.com.tennisscore.game.statepattern.GameType;
+import monopolybankir.com.tennisscore.game.statepattern.LargeGameState;
+import monopolybankir.com.tennisscore.game.statepattern.PitcherState;
+import monopolybankir.com.tennisscore.game.statepattern.ShortGameState;
+import monopolybankir.com.tennisscore.game.statepattern.TieBreakGameState;
 
+public class Game implements CallBack {
 
-    PlayerManager playerManager;
-    Pitcher pitcher;
+    private AbstractState state;
+    private PlayerManager playerManager;
+    private Pitcher pitcher;
 
-    public Game(String nameFirst, String nameSecond){
+    public Game(String nameFirst, String nameSecond, GameType typeGame){
         List playerList = new ArrayList();
         playerList.add(new Player(nameFirst,PlayerRange.First));
         playerList.add(new Player(nameSecond,PlayerRange.Second));
-
         playerManager = new PlayerManager(playerList);
-    }
+        pitcher = new Pitcher();
 
-    public void setPitcher(PlayerRange playerRange){
-        Player player = playerManager.getPlayerByRange(playerRange);
-        pitcher.setPitcher(player);
-    }
-
-
-    public void incrementScore(PlayerRange range){
-        playerManager.incrementScore(range);
-
-        if(isNeedChangePitcher()){
-            Player candidatToPitcher = playerManager.getOpponent(pitcher.getCurrentPitcher());
-
-            if(candidatToPitcher != null)
-                pitcher.setPitcher(candidatToPitcher);
+        AbstractState nextState;
+        switch (typeGame) {
+            case SHORT:
+                nextState = new ShortGameState(this, playerManager, pitcher, new TieBreakGameState(this,playerManager,pitcher,null));
+                break;
+            case LARGE:
+                nextState = new LargeGameState(this, playerManager, pitcher, new TieBreakGameState(this,playerManager,pitcher,null));
+                break;
+            default:
+                nextState = new LargeGameState(this, playerManager, pitcher, new TieBreakGameState(this,playerManager,pitcher,null));
+                break;
         }
-    }
 
-    public boolean isNeedChangePitcher(){
-        int totalScore = playerManager.getTotalScore();
-        if(totalScore % 5==0)
-            return true;
+        state = new PitcherState(this,playerManager,pitcher,nextState);
 
-        return false;
     }
 
 
     public void onReverseRange(){
         playerManager.reverseRange();
+    }
+
+    @Override
+    public void onSetState(AbstractState state) {
+        this.state = state;
+    }
+
+    public void incrementScore(PlayerRange range){
+        state.incrementScore(range);
+    }
+
+    public ReturnObject getStateGame(){
+        return state.getStateGame();
     }
 }

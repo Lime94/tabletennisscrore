@@ -43,6 +43,8 @@ public class PitcherInfoDialog extends AppCompatDialogFragment {
 
         Dialog dialog = getDialog();
         if (dialog != null) {
+
+            //TODO сделать ширину 80% от экрана
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }

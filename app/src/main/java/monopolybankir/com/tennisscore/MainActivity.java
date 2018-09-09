@@ -11,7 +11,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import monopolybankir.com.tennisscore.databinding.ActivityMainBinding;
-import monopolybankir.com.tennisscore.game.Game;
 
 
 public class MainActivity extends AppCompatActivity {
