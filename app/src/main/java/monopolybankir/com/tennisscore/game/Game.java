@@ -3,7 +3,7 @@ package monopolybankir.com.tennisscore.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import monopolybankir.com.tennisscore.game.model.ReturnObject;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObject;
 import monopolybankir.com.tennisscore.game.statepattern.AbstractState;
 import monopolybankir.com.tennisscore.game.statepattern.CallBack;
 import monopolybankir.com.tennisscore.game.statepattern.GameType;

@@ -6,9 +6,9 @@ import monopolybankir.com.tennisscore.game.Pitcher;
 import monopolybankir.com.tennisscore.game.Player;
 import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;
-import monopolybankir.com.tennisscore.game.model.ReturnObject;
-import monopolybankir.com.tennisscore.game.model.ReturnObjectBuilder;
-import monopolybankir.com.tennisscore.game.model.WinnerBuilder;
+import monopolybankir.com.tennisscore.game.builderPattern.GameStatsBuilder;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObject;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObjectBuilder;
 
 public class TieBreakGameState extends AbstractState {
 
@@ -52,7 +52,7 @@ public class TieBreakGameState extends AbstractState {
 
 
         if (goalDiffenece >= 2)
-            EventBus.getDefault().post(new WinnerBuilder(player,playerManager.getOpponent(player)));
+            EventBus.getDefault().post(new GameStatsBuilder(player,playerManager.getOpponent(player)));
     }
 
 

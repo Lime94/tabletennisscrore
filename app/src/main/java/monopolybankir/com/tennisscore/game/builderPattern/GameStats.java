@@ -1,8 +1,8 @@
-package monopolybankir.com.tennisscore.game.model;
+package monopolybankir.com.tennisscore.game.builderPattern;
 
 import com.orm.SugarRecord;
 
-public class Winner extends SugarRecord<Winner> {
+public class GameStats extends SugarRecord<GameStats> {
 
     public String dateGame;
 
@@ -14,7 +14,7 @@ public class Winner extends SugarRecord<Winner> {
 
     public String scoreLoser;
 
-    public Winner(String dateGame, String nameWinner, String nameLooser, String scoreWinner, String scoreLoser) {
+    public GameStats(String dateGame, String nameWinner, String nameLooser, String scoreWinner, String scoreLoser) {
         this.dateGame = dateGame;
         this.nameWinner = nameWinner;
         this.nameLooser = nameLooser;
@@ -22,7 +22,7 @@ public class Winner extends SugarRecord<Winner> {
         this.scoreLoser = scoreLoser;
     }
 
-    public Winner(){
+    public GameStats(){
         //for SugarORM
     }
 }

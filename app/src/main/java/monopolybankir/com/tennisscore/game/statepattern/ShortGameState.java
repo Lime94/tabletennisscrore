@@ -6,9 +6,9 @@ import monopolybankir.com.tennisscore.game.Pitcher;
 import monopolybankir.com.tennisscore.game.Player;
 import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;
-import monopolybankir.com.tennisscore.game.model.ReturnObject;
-import monopolybankir.com.tennisscore.game.model.ReturnObjectBuilder;
-import monopolybankir.com.tennisscore.game.model.WinnerBuilder;
+import monopolybankir.com.tennisscore.game.builderPattern.GameStatsBuilder;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObject;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObjectBuilder;
 
 public class ShortGameState extends AbstractState {
 
@@ -47,7 +47,7 @@ public class ShortGameState extends AbstractState {
 
         if(player.getScore()>= 11){
             if (goalDiffenece >= 2)
-                EventBus.getDefault().post(new WinnerBuilder(player,opponent));
+                EventBus.getDefault().post(new GameStatsBuilder(player,opponent));
             else
                 callBack.onSetState(new TieBreakGameState(callBack,playerManager,pitcher)); //tieBreak
 

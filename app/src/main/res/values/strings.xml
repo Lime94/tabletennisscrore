@@ -107,4 +107,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="game_history">Games history</string>
+    <string name="really_want_to_close_game">Are you really want to close the game?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

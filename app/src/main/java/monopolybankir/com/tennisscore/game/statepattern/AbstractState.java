@@ -1,6 +1,6 @@
 package monopolybankir.com.tennisscore.game.statepattern;
 
-import monopolybankir.com.tennisscore.game.model.ReturnObject;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObject;
 import monopolybankir.com.tennisscore.game.Pitcher;
 import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;

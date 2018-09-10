@@ -1,7 +1,6 @@
 package monopolybankir.com.tennisscore.adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
@@ -12,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import monopolybankir.com.tennisscore.R;
 import monopolybankir.com.tennisscore.databinding.RvHistoryGameDateItemBinding;
 import monopolybankir.com.tennisscore.databinding.RvHistoryGameItemBinding;
-import monopolybankir.com.tennisscore.game.model.Winner;
+import monopolybankir.com.tennisscore.game.builderPattern.GameStats;
 
 public class HistoryGameAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
     private final int dateType = 0;
     private final int gameType = 1;
-    List<Winner> winners;
+    List<GameStats> gameStats;
 
-    public HistoryGameAdapter(List<Winner> winners){
-        this.winners = winners;
+    public HistoryGameAdapter(List<GameStats> gameStats){
+        this.gameStats = gameStats;
     }
 
     @NonNull
@@ -35,7 +34,7 @@ public class HistoryGameAdapter  extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((GameViewHolder)holder).bind(winners.get(position));
+        ((GameViewHolder)holder).bind(gameStats.get(position));
     }
 
     @Override
@@ -45,7 +44,7 @@ public class HistoryGameAdapter  extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return winners.size();
+        return gameStats.size();
     }
 
     class GameViewHolder extends RecyclerView.ViewHolder {
@@ -56,12 +55,12 @@ public class HistoryGameAdapter  extends RecyclerView.Adapter<RecyclerView.ViewH
             this.binding = binding;
         }
 
-        void bind(Winner winner){
-            binding.tvFirstPlayerName.setText(winner.nameWinner);
-            binding.tvSecondPlayerName.setText(winner.nameLooser);
+        void bind(GameStats gameStats){
+            binding.tvFirstPlayerName.setText(gameStats.nameWinner);
+            binding.tvSecondPlayerName.setText(gameStats.nameLooser);
 
-            binding.tvFirstPlayerScore.setText(winner.scoreWinner);
-            binding.tvSecondPlayerScore.setText(winner.scoreLoser);
+            binding.tvFirstPlayerScore.setText(gameStats.scoreWinner);
+            binding.tvSecondPlayerScore.setText(gameStats.scoreLoser);
 
 
         }

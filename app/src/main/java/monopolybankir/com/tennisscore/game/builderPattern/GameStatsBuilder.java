@@ -1,6 +1,4 @@
-package monopolybankir.com.tennisscore.game.model;
-
-import com.orm.SugarRecord;
+package monopolybankir.com.tennisscore.game.builderPattern;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -8,13 +6,13 @@ import java.util.Date;
 
 import monopolybankir.com.tennisscore.game.Player;
 
-public class WinnerBuilder  {
+public class GameStatsBuilder {
 
     Player winnerPlayer;
     Player losePlayer;
     String dateGame;
 
-    public WinnerBuilder(Player winnerPlayer, Player losePlayer) {
+    public GameStatsBuilder(Player winnerPlayer, Player losePlayer) {
         this.winnerPlayer = winnerPlayer;
         this.losePlayer = losePlayer;
 
@@ -25,8 +23,8 @@ public class WinnerBuilder  {
     }
 
 
-    public Winner convertToWinner(){
-        return new Winner(
+    public GameStats convertToGameStats(){
+        return new GameStats(
                 dateGame,
                 winnerPlayer.getName(),
                 losePlayer.getName(),

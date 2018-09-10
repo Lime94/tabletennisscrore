@@ -1,6 +1,5 @@
-package monopolybankir.com.tennisscore.game.model;
+package monopolybankir.com.tennisscore.game.builderPattern;
 
-import monopolybankir.com.tennisscore.game.Player;
 import monopolybankir.com.tennisscore.game.PlayerRange;
 
 public class ReturnObject {

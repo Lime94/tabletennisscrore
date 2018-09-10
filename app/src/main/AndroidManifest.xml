@@ -19,13 +19,13 @@
             android:value="table_tennis_score.db" />
         <meta-data
             android:name="VERSION"
-            android:value="3" />
+            android:value="4" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="monopolybankir.com.tennisscore.game.model" />
+            android:value="monopolybankir.com.tennisscore.game.builderPattern" />
 
         <activity
             android:name=".MainActivity"

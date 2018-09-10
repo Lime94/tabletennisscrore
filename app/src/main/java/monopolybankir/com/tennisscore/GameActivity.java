@@ -1,10 +1,10 @@
 package monopolybankir.com.tennisscore;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import monopolybankir.com.tennisscore.databinding.ActivityGameBinding;
 import monopolybankir.com.tennisscore.game.PlayerRange;
-import monopolybankir.com.tennisscore.game.model.Winner;
-import monopolybankir.com.tennisscore.game.model.WinnerBuilder;
+import monopolybankir.com.tennisscore.game.builderPattern.GameStatsBuilder;
 import monopolybankir.com.tennisscore.game.statepattern.GameType;
 import monopolybankir.com.tennisscore.mvp.GameActivityPresenter;
 import monopolybankir.com.tennisscore.mvp.IGameActivity;
@@ -12,9 +12,9 @@ import monopolybankir.com.tennisscore.views.MvpAppCompatActivity;
 import monopolybankir.com.tennisscore.views.PitcherInfoDialog;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -22,8 +22,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
 
 
 public class GameActivity extends MvpAppCompatActivity implements IGameActivity {
@@ -107,17 +105,28 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onWinnerDetermined(WinnerBuilder winnerBuilder){
-//        new Handler().post(new Runnable() {
-//            @Override
-//            public void run() {
-//                winnerBuilder.convertToWinner().save();
-//            }
-//        });
-
-        winnerBuilder.convertToWinner().save();
-
+    public void onWinnerDetermined(GameStatsBuilder gameStatsBuilder){
+        gameStatsBuilder.convertToGameStats().save();
         Intent intent = new Intent(this, CongratulationsActivity.class);
         startActivity(intent);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.really_want_to_close_game)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        GameActivity.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                       dialog.dismiss();
+                    }
+                });
+        builder.show();
     }
 }

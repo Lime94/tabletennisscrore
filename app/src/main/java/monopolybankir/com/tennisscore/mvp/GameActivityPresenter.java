@@ -9,7 +9,7 @@ import com.arellomobile.mvp.MvpPresenter;
 
 import monopolybankir.com.tennisscore.game.Game;
 import monopolybankir.com.tennisscore.game.PlayerRange;
-import monopolybankir.com.tennisscore.game.model.ReturnObject;
+import monopolybankir.com.tennisscore.game.builderPattern.ReturnObject;
 import monopolybankir.com.tennisscore.game.statepattern.GameType;
 
 

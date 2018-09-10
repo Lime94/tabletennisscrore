@@ -6,12 +6,12 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 import java.util.List;
 
-import monopolybankir.com.tennisscore.game.model.Winner;
+import monopolybankir.com.tennisscore.game.builderPattern.GameStats;
 
 public interface ICongratulationsActivity extends MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy.class)
-    void showHistory(List<Winner> winners);
+    void showHistory(List<GameStats> gameStats);
 
     @StateStrategyType(AddToEndSingleStrategy.class)
     void showProgressbar();
