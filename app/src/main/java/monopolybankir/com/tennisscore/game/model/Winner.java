@@ -1,39 +1,28 @@
 package monopolybankir.com.tennisscore.game.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.orm.SugarRecord;
 
-import monopolybankir.com.tennisscore.game.Player;
+public class Winner extends SugarRecord<Winner> {
 
-public class Winner {
+    public String dateGame;
 
-    Player winnerPlayer;
-    Player losePlayer;
-    String dateGame;
+    public String nameWinner;
 
-    public Winner(Player winnerPlayer, Player losePlayer) {
-        this.winnerPlayer = winnerPlayer;
-        this.losePlayer = losePlayer;
+    public String nameLooser;
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        dateGame = dateFormat.format(date);
+    public String scoreWinner;
 
+    public String scoreLoser;
+
+    public Winner(String dateGame, String nameWinner, String nameLooser, String scoreWinner, String scoreLoser) {
+        this.dateGame = dateGame;
+        this.nameWinner = nameWinner;
+        this.nameLooser = nameLooser;
+        this.scoreWinner = scoreWinner;
+        this.scoreLoser = scoreLoser;
     }
 
-    public String getWinnerName() {
-        return winnerPlayer.getName();
-    }
-    public String getLosePlayerName(){
-        return losePlayer.getName();
-    }
-
-    public int getWinnerScore(){
-        return  winnerPlayer.getScore();
-    }
-
-    public int getLoseScore(){
-       return losePlayer.getScore();
+    public Winner(){
+        //for SugarORM
     }
 }

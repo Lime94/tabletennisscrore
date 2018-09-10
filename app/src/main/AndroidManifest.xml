@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="monopolybankir.com.tennisscore">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <meta-data
+            android:name="DATABASE"
+            android:value="table_tennis_score.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="monopolybankir.com.tennisscore.game.model" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -25,8 +41,17 @@
             android:name=".GameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_game"
-            android:theme="@style/FullScreenTheme"></activity>
-
+            android:noHistory="true"
+            android:theme="@style/FullScreenTheme" />
+        <activity
+            android:name=".CongratulationsActivity"
+            android:label="@string/game_history"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/CongratulationsActivityTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="monopolybankir.com.tennisscore.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

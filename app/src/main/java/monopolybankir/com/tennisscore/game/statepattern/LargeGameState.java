@@ -1,7 +1,5 @@
 package monopolybankir.com.tennisscore.game.statepattern;
 
-import android.util.Log;
-
 import org.greenrobot.eventbus.EventBus;
 
 import monopolybankir.com.tennisscore.game.Pitcher;
@@ -10,7 +8,7 @@ import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;
 import monopolybankir.com.tennisscore.game.model.ReturnObject;
 import monopolybankir.com.tennisscore.game.model.ReturnObjectBuilder;
-import monopolybankir.com.tennisscore.game.model.Winner;
+import monopolybankir.com.tennisscore.game.model.WinnerBuilder;
 
 public class LargeGameState extends AbstractState {
 
@@ -58,7 +56,7 @@ public class LargeGameState extends AbstractState {
 
         if(player.getScore()>= 21){
             if (goalDiffenece >= 2) {
-                EventBus.getDefault().post(new Winner(player,opponent));
+                EventBus.getDefault().post(new WinnerBuilder(player,opponent));
             }
             else
                 callBack.onSetState(new TieBreakGameState( callBack,  playerManager,  pitcher)); //tieBreak

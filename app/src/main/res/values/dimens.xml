@@ -3,4 +3,6 @@
     <dimen name="shrine_toolbar_offset_start">10dp</dimen>
     <dimen name="shrine_toolbar_offset_top">80dp</dimen>
     <dimen name="shrine_toolbar_image_offset_top">100dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

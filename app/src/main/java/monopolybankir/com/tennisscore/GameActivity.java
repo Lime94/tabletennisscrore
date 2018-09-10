@@ -1,10 +1,10 @@
 package monopolybankir.com.tennisscore;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import monopolybankir.com.tennisscore.databinding.ActivityGameBinding;
 import monopolybankir.com.tennisscore.game.PlayerRange;
 import monopolybankir.com.tennisscore.game.model.Winner;
+import monopolybankir.com.tennisscore.game.model.WinnerBuilder;
 import monopolybankir.com.tennisscore.game.statepattern.GameType;
 import monopolybankir.com.tennisscore.mvp.GameActivityPresenter;
 import monopolybankir.com.tennisscore.mvp.IGameActivity;
@@ -14,13 +14,16 @@ import monopolybankir.com.tennisscore.views.PitcherInfoDialog;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
 
 
 public class GameActivity extends MvpAppCompatActivity implements IGameActivity {
@@ -102,8 +105,19 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe
-    public void onWinnerDetermined(Winner winner){
-        Toast.makeText(this,winner.getWinnerName(),Toast.LENGTH_SHORT).show();
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onWinnerDetermined(WinnerBuilder winnerBuilder){
+//        new Handler().post(new Runnable() {
+//            @Override
+//            public void run() {
+//                winnerBuilder.convertToWinner().save();
+//            }
+//        });
+
+        winnerBuilder.convertToWinner().save();
+
+        Intent intent = new Intent(this, CongratulationsActivity.class);
+        startActivity(intent);
     }
 }
