@@ -58,16 +58,16 @@ public class TieBreakGameState extends AbstractState {
 
     private void setScoreLabel() {
         if (firstScore > secondScore) {
-            tieBreakLabelFirst = TieBrakeState.MORE.name();
-            tieBreakLabelSecond = TieBrakeState.LESS.name();
+            tieBreakLabelFirst = TieBrakeState.MORE.getLabel();
+            tieBreakLabelSecond = TieBrakeState.LESS.getLabel();
 
         } else if (firstScore < secondScore) {
-            tieBreakLabelFirst = TieBrakeState.LESS.name();
-            tieBreakLabelSecond = TieBrakeState.MORE.name();
+            tieBreakLabelFirst = TieBrakeState.LESS.getLabel();
+            tieBreakLabelSecond = TieBrakeState.MORE.getLabel();
 
         } else if (firstScore == secondScore) {
-            tieBreakLabelSecond = TieBrakeState.EQUALY.name();
-            tieBreakLabelFirst = TieBrakeState.EQUALY.name();
+            tieBreakLabelSecond = TieBrakeState.EQUALY.getLabel();
+            tieBreakLabelFirst = TieBrakeState.EQUALY.getLabel();
         }
     }
 
@@ -84,8 +84,18 @@ public class TieBreakGameState extends AbstractState {
 
 
     private enum TieBrakeState {
-        MORE,
-        LESS,
-        EQUALY
+        MORE("AD"),
+        LESS(" "),
+        EQUALY("DEUS");
+
+        String state;
+        TieBrakeState(String  state){
+            this.state = state;
+        }
+
+        String getLabel(){
+            return state;
+        }
+
     }
 }
