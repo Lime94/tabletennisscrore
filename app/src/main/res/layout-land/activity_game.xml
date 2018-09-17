@@ -15,62 +15,56 @@
             style="@style/subtitle2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
             android:gravity="center_horizontal"
             android:text="@string/playerone"
             android:textAllCaps="true"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvPlayerTwoName"
             style="@style/subtitle2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center_horizontal"
             android:text="@string/playertwo"
             android:textAllCaps="true"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/secondSide"
-            android:layout_width="230dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="2dp"
-            android:elevation="10dp"
-            android:src="@drawable/bg_table_blue"
+            android:layout_marginBottom="55dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:layout_constraintBottom_toTopOf="@+id/tvPlayerTwoName"
+            android:src="@drawable/bg_table_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstSide" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/firstSide"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/firstSide"
-            android:layout_width="230dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:elevation="10dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="55dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:layout_marginBottom="2dp"
             android:src="@drawable/bg_red_table"
-            app:layout_constraintBottom_toTopOf="@+id/secondSide"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/secondSide"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvPlayerTwoName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneName" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -79,11 +73,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
             android:text="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/firstSide"
+            app:layout_constraintEnd_toStartOf="@+id/tvScoreSecondPlayer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvPlayerOneName"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -91,13 +84,12 @@
             style="@style/subtitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/secondSide" />
+            app:layout_constraintEnd_toStartOf="@+id/tvPlayerTwoName"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvScoreFirstPlayer"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <LinearLayout
@@ -106,19 +98,18 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/tvPlayerTwoName"
-            app:layout_constraintEnd_toStartOf="@+id/secondSide">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_ball" />
 
-            <monopolybankir.com.tennisscore.views.VerticalTextView
+            <TextView
                 style="@style/subtitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,14 +122,14 @@
             android:id="@+id/llFirstPlayerPitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
             android:visibility="invisible"
-            app:layout_constraintEnd_toStartOf="@+id/firstSide"
-            app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneName">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <monopolybankir.com.tennisscore.views.VerticalTextView
+            <TextView
                 style="@style/subtitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,7 +140,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_ball" />
         </LinearLayout>
 
@@ -157,14 +147,14 @@
             android:id="@+id/fabCancelLastAction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_cancel_last_action"
-            app:backgroundTint="@color/gray"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_cancel_last_action"
+            app:backgroundTint="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package monopolybankir.com.tennisscore.views;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -29,12 +30,10 @@ public class PitcherInfoDialog extends AppCompatDialogFragment {
         bnd = DataBindingUtil.inflate(
                 inflater, R.layout.pitcher_info_dialog, container, false);
 
-        bnd.btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPrefsUtil.setPitcherDialogShowAgain(!bnd.cbDontShowAgain.isChecked());
-                dismiss();
-            }
+        bnd.btnOk.setOnClickListener(view -> {
+            SharedPrefsUtil.getInstance(getActivity().getSharedPreferences(SharedPrefsUtil.class.getSimpleName(),Context.MODE_PRIVATE))
+                    .setPitcherDialogShowAgain(!bnd.cbDontShowAgain.isChecked());
+            dismiss();
         });
         return bnd.getRoot();
     }

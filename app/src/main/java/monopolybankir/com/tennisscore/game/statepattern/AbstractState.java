@@ -1,11 +1,13 @@
 package monopolybankir.com.tennisscore.game.statepattern;
 
+import java.io.Serializable;
+
 import monopolybankir.com.tennisscore.game.builderPattern.ReturnObject;
 import monopolybankir.com.tennisscore.game.Pitcher;
 import monopolybankir.com.tennisscore.game.PlayerManager;
 import monopolybankir.com.tennisscore.game.PlayerRange;
 
-public abstract class AbstractState {
+public abstract class AbstractState implements Serializable {
 
     PlayerManager playerManager;
     Pitcher pitcher;

@@ -1,9 +1,10 @@
 package monopolybankir.com.tennisscore.game;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerManager {
+public class PlayerManager  implements Serializable {
 
     private List<Player> players;
 

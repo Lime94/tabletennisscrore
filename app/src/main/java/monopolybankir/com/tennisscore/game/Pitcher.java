@@ -1,6 +1,9 @@
 package monopolybankir.com.tennisscore.game;
 
-public class Pitcher {
+import java.io.Serializable;
+
+
+public class Pitcher implements  Serializable {
 
     private Player pitcherPlayer;
 

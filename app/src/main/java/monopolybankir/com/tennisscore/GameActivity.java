@@ -55,6 +55,7 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
         bnd = DataBindingUtil.setContentView(this, R.layout.activity_game);
         bnd.firstSide.setOnClickListener(view -> gameActivityPresenter.onIncrementScore(PlayerRange.First));
         bnd.secondSide.setOnClickListener(view -> gameActivityPresenter.onIncrementScore(PlayerRange.Second));
+        bnd.fabCancelLastAction.setOnClickListener(view -> gameActivityPresenter.cancelLastAction());
     }
 
 
@@ -73,10 +74,14 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
     }
 
     @Override
-    public void showPitcher(PlayerRange range) {
-        bnd.llSecondPlayerPitcher.setVisibility(range.equals(PlayerRange.Second) ? View.VISIBLE : View.INVISIBLE);
-        bnd.llFirstPlayerPitcher.setVisibility(range.equals(PlayerRange.First) ? View.VISIBLE : View.INVISIBLE);
-
+    public void showPitcher(PlayerRange pitcher) {
+        if(pitcher == null) {
+            bnd.llSecondPlayerPitcher.setVisibility(View.INVISIBLE);
+            bnd.llFirstPlayerPitcher.setVisibility(View.INVISIBLE);
+        }else{
+            bnd.llSecondPlayerPitcher.setVisibility(pitcher.equals(PlayerRange.Second) ? View.VISIBLE : View.INVISIBLE);
+            bnd.llFirstPlayerPitcher.setVisibility(pitcher.equals(PlayerRange.First) ? View.VISIBLE : View.INVISIBLE);
+        }
     }
 
     @Override
@@ -101,6 +106,7 @@ public class GameActivity extends MvpAppCompatActivity implements IGameActivity 
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+
     }
 
 
