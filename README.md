@@ -8,9 +8,14 @@ Application also can mark pitcher in the game, and change it according to the pi
 
 Results of games save into Database.
  
+## ScreenShoots
+
+<p align="center"><img width="300" src="https://lh3.googleusercontent.com/WCTgthJV6-VfDbgZBc6k4CGns3T1paMYLDRkeH3eOrFkhre34MKO6eIBd3XOv3trfoYi=w1855-h965-rw?.jpg"></p>
+<p align="center"><img width="300" src="https://lh3.googleusercontent.com/ONJRQHjM5JEf55fGZWS6FokysjgjuTop8MnLL4eIWbBLxEV-Cfi0yxlVJo2ZyWeBZms=w1855-h965-rw?.jpg"></p>
+<p align="center"><img width="300" src="https://lh3.googleusercontent.com/8sfNLZGkDZ4oPwsVEBH3vw3ONUxGrL2ShqbA_f__U5qGOY_npU7-nCSEVCsTqv0SiFA=w1855-h965-rw?.jpg"></p>
  
 ## Google Play URL
- https://play.google.com/apps/publish/?account=4667203627945864175#AppDashboardPlace:p=monopolybankir.com.tennisscore&appid=4976228252497840903
+https://play.google.com/store/apps/details?id=monopolybankir.com.tennisscore
  
 ## Author
 Alexey Gradov, shoesmag12@gmail.com
