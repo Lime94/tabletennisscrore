@@ -10,9 +10,11 @@ Results of games save into Database.
  
 ## ScreenShoots
 
-<img style="float:left" width="100" src="https://lh3.googleusercontent.com/WCTgthJV6-VfDbgZBc6k4CGns3T1paMYLDRkeH3eOrFkhre34MKO6eIBd3XOv3trfoYi=w1855-h965-rw?.jpg">
-<img style="float:left" width="100" src="https://lh3.googleusercontent.com/ONJRQHjM5JEf55fGZWS6FokysjgjuTop8MnLL4eIWbBLxEV-Cfi0yxlVJo2ZyWeBZms=w1855-h965-rw?.jpg">
-<img  style="float:left" width="100" src="https://lh3.googleusercontent.com/8sfNLZGkDZ4oPwsVEBH3vw3ONUxGrL2ShqbA_f__U5qGOY_npU7-nCSEVCsTqv0SiFA=w1855-h965-rw?.jpg">
+<div style="display: inline-block">
+  <img  width="200" src="https://lh3.googleusercontent.com/WCTgthJV6-VfDbgZBc6k4CGns3T1paMYLDRkeH3eOrFkhre34MKO6eIBd3XOv3trfoYi=w1855-h965-rw?.jpg">
+  <img  width="200" src="https://lh3.googleusercontent.com/ONJRQHjM5JEf55fGZWS6FokysjgjuTop8MnLL4eIWbBLxEV-Cfi0yxlVJo2ZyWeBZms=w1855-h965-rw?.jpg">
+  <img  width="200" src="https://lh3.googleusercontent.com/8sfNLZGkDZ4oPwsVEBH3vw3ONUxGrL2ShqbA_f__U5qGOY_npU7-nCSEVCsTqv0SiFA=w1855-h965-rw?.jpg">
+ </div>
  
 ## Google Play URL
 https://play.google.com/store/apps/details?id=monopolybankir.com.tennisscore
